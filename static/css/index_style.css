@@ -1,0 +1,17 @@
+.logo{
+	padding-left: 25px;
+	font-weight: 500;
+}
+
+.thin-text{
+	font-weight: 100;
+	background: rgba(96, 125, 139, .4);
+	padding: 40px;
+	border-radius: 10px;
+}
+
+.tags-div{
+	border: 1px solid;
+	border-color:rgba(96, 125, 139, .4) ;
+    border-radius: 5px;
+}
