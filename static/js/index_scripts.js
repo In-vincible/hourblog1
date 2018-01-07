@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $('.slider').slider();
     $('.parallax').parallax();
+    $('.materialboxed').materialbox();
 	$('.carousel.carousel-slider').carousel({fullWidth: true});
 	autoplay()   
 	function autoplay() {

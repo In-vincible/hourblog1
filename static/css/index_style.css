@@ -15,3 +15,8 @@
 	border-color:rgba(96, 125, 139, .4) ;
     border-radius: 5px;
 }
+
+.post_image{
+	width: 100%;
+	height: 400px;
+}
