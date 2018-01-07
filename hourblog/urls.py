@@ -19,10 +19,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from devohack.views import(
     index,
+    post_view,
 )
 
 urlpatterns = [
     url(r'^$',index, name='index'),
+    url(r'^post/$', post_view, name='post'),
     url(r'^admin/', admin.site.urls),
 ]
 
