@@ -59,53 +59,37 @@
 	  	<!-- SECTION FOR THE POST CARDS -->
 	  	<div class="row" style="margin-top: 20px;">
 		  	<div class="col l8 s12">
-				<div class="card horizontal">
-	  				<div class="card-image">
-	    				<img src="/static/images/300cross200.jpeg">
-	  				</div>
-	  				<div class="card-stacked">
-	    				<div class="card-content">
-	      					<p>I am a very simple card. I am good at containing small bits of information. But what I am not good at is tolerating you looking at me. So please scroll down quickly.</p>
-	    				</div>
-	    				<div class="card-action">
-	      					<a href="#">This is a link</a>
-	    				</div>
-	  				</div>
-				</div>
-				<div class="card horizontal">
-	  				<div class="card-image">
-	    				<img src="/static/images/300cross200.jpeg">
-	  				</div>
-	  				<div class="card-stacked">
-	    				<div class="card-content">
-	      					<p>I am a very simple card. I am good at containing small bits of information. But what I am not good at is tolerating you looking at me. So please scroll down quickly.</p>
-	    				</div>
-	    				<div class="card-action">
-	      					<a href="#">This is a link</a>
-	    				</div>
-	  				</div>
-				</div>
-				<div class="card horizontal">
-	  				<div class="card-image">
-	    				<img src="/static/images/300cross200.jpeg">
-	  				</div>
-	  				<div class="card-stacked">
-	    				<div class="card-content">
-	      					<p>I am a very simple card. I am good at containing small bits of information. But what I am not good at is tolerating you looking at me. So please scroll down quickly.</p>
-	    				</div>
-	    				<div class="card-action">
-	      					<a href="#">This is a link</a>
-	    				</div>
-	  				</div>
-				</div>
+		  		{% if posts %}
+		  			{% for post in posts.object_list %}
+						<div class="card horizontal">
+			  				<div class="card-image">
+			    				<img src="/static/images/300cross200.jpeg">
+			  				</div>
+			  				<div class="card-stacked">
+			    				<div class="card-content">
+			      					<p>{{ post.postTitle }}</p>
+			    				</div>
+			    				<div class="card-action">
+			      					<a href="{% url 'view_post' post.slug %}">READ MORE</a>
+			    				</div>
+			  				</div>
+						</div>
+					{% endfor %}
+				{% endif %}
 				<ul class="pagination">
-		    		<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-				    <li class="active"><a href="#!">1</a></li>
-				    <li class="waves-effect"><a href="#!">2</a></li>
-				    <li class="waves-effect"><a href="#!">3</a></li>
-				    <li class="waves-effect"><a href="#!">4</a></li>
-				    <li class="waves-effect"><a href="#!">5</a></li>
-				    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+					{% if posts.has_previous %}
+		    			<li class="disabled"><a href="?page={{ posts.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+		    		{% endif %}
+		    		{% for pg in posts.paginator.page_range %}
+		    			{% if posts.number == pg %}
+					    	<li class="active"><a href="?page={{pg}}">{{ pg }}</a></li>
+					    {% else %}
+					    	<li class="waves-effect"><a href="?page={{pg}}">{{ pg }}</a></li>
+					    {% endif %}
+				    {% endfor %}
+				    {% if posts.has_next %}
+				    	<li class="waves-effect"><a href="?page={{ posts.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+				    {% endif %}
 		    	</ul>	
 		  	</div>
 
