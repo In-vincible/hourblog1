@@ -34,9 +34,9 @@
       <div class="parallax-container valign-wrapper">
         	<div class="container">
         		<div class="row">
-        			<div class="col l7 s12 white-text center-block valign" style="background: rgba(96, 125, 139, .4); border-radius: 10px;">
-        				<h3 >Here's the Title to the Blog</h3>
-        				<h7 >VARSHA VERMA | 7 JANUARY, 2018</h7>
+        			<div class="col l7 s12 white-text center-block valign" style="background: rgba(96, 125, 139, .4); border-radius: 10px; margin-left: 200px;">
+        				<h3 style="margin-left: 20px;">{{ postTitle }}</h3>
+        				<h7 style="margin-left: 100px">{{ authorName }} | {{ date }}</h7>
         			</div>
         		</div>
         	</div>
@@ -50,12 +50,7 @@
 	  	<!-- SECTION FOR THE POST CARDS -->
 	  	<div class="row" style="margin-top: 20px;">
 		  	<div class="col l8 s12">
-				<p>abdklasbvkls cbhaslvh;sahb cbsklabvcjlbsdkugvu cvasbkjvcsu cbsjakbvck cvskjvkcjabvk cvskhvckhav cshvkjcvskajv sbcdkjvb bcvj cbv cvdbskjvcksjavbkjvck
-				Hip music played as we entered the beautifully renovated restaurant. We were seated at a chic table, and greeted promptly. After ordering tea, perusing the menu and asking our server a few uninspired questions, to which we received equally uninspired answers, we ordered dumplings, Korean fried chicken, and an eel dish.
-
-				We then proceeded to have a perfectly average experience, and haven’t been back. Loyal customers play a vital role in the success of a business — this is no longer in question. The new question is, how can small businesses ensure that first-time customers become loyal customers?
-
-				Small businesses can use these five universally applicable strategies to increase the likelihood that new customers become repeat customers.</p>	
+				<p>{{ postContent|safe }}</p>	
 		  	</div>
 
             
