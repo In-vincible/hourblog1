@@ -29,47 +29,10 @@
 			<li><a href="{% url 'view_aboutus' %}">About Us</a></li>
 		  </ul>
 		</div>
-		</nav>
-
-
-    
-    <!--img class="materialboxed post_image" width="650" src="/static/images/1.jpeg"-->
-      
-      <!-- POST HERO SECTION -->
-      <div class="parallax-container valign-wrapper">
-        	<div class="container">
-        		<div class="row">
-        			<div class="col l7 s12 white-text center-block valign" style="background: rgba(96, 125, 139, .4); border-radius: 10px; margin-left: 200px;">
-        				<h3 style="margin-left: 20px;">{{ postTitle }}</h3>
-        				<h7 style="margin-left: 100px">{{ authorName }} | {{ date }}</h7>
-        			</div>
-        		</div>
-        	</div>
-      		<div class="parallax"><img src="/static/images/1.jpeg"></div>
-	  </div>
-
-
-	  <!-- POST CARD SECTION WITH PAGINATION INCLUDED AND RIGHT SIDE CONTAINER WITH TAGS -->
-
-	  <div class="container">
-	  	<!-- SECTION FOR THE POST CARDS -->
-	  	<div class="row" style="margin-top: 20px;">
-		  	<div class="col l8 s12">
-				<p>{{ postContent|safe }}</p>	
-		  	</div>
-
-            
-		  	<!-- SECTION FOR THE TAGS -->
-		  	<div class="col l3 s12 tags-div" style="margin-left: 50px;">
-		  		<h5>Tags</h5>
-				<div class="divider" style="margin-bottom: 10px;"></div>
-				{% for tag in tags %}
-					<a href="{% url 'view_tag' tag.slug %}"><div class="chip">#{{ tag.tagTitle }}</div></a>
-				{% endfor %}  
-		  	</div>
-	    </div>
-	  </div>
-
+        </nav>
+        
+        
+        <p>Page Under Development</p>
 
 	  <!-- PAGE FOOTER -->
 	  <footer class="page-footer teal lighten-2">

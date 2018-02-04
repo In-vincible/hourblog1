@@ -20,11 +20,17 @@ from django.conf.urls.static import static
 from devohack.views import(
     index,
     post_view,
+    category_view,
+    tag_view,
+    aboutus_view
 )
 
 urlpatterns = [
     url(r'^$',index, name='index'),
+    url(r'^aboutus/$', aboutus_view, name='view_aboutus'),
     url(r'^post/(?P<slug>[\w-]+)/$', post_view, name='view_post'),
+    url(r'^category/(?P<slug>[\w-]+)/$', category_view, name='view_category'),
+    url(r'^tag/(?P<slug>[\w-]+)/$', tag_view, name='view_tag'),
     url(r'^admin/', admin.site.urls),
 ]
 
