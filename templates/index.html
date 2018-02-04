@@ -17,11 +17,16 @@
 
 	<nav>
 		<div class="nav-wrapper teal lighten-2">
-    	<a href="#" class="brand-logo logo"><span class="logo">DevOHack.</span></a>
+    	<a href="{% url 'index' %}" class="brand-logo logo"><span class="logo">DevOHack.</span></a>
     	<ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Categories</a></li>
-        <li><a href="#">About Us</a></li>
+        <li><a href="{% url 'index' %}">Blog</a></li>
+		<li><a class='dropdown-button btn' href='#' data-beloworigin="true" data-alignment="right" data-hover='true' data-activates='dropdown1'>Categories</a></li>
+			<ul id='dropdown1' class='dropdown-content'>
+				{% for c in categories %}
+					<li><a href="{% url 'view_category' c.slug%}">{{ c.categoryTitle }}</a></li>
+				{% endfor %}
+			  </ul>
+        <li><a href="{% url 'view_aboutus' %}">About Us</a></li>
       </ul>
     </div>
 	</nav>
@@ -30,26 +35,13 @@
     <!-- CAROUSEL SHOWING FEATURED/POPULAR POSTS -->
 
 	<div class="carousel carousel-slider center" data-indicators="true">
-	    <div class="carousel-item red white-text" href="#one!" style="background-image: url('/static/images/1.jpeg'); background-size:cover;"> 
-	    	<h2>First Panel</h2>
-	    	<p class="white-text">Here is some mock data about this post. Apologies to your eyes!</p>
-	    	<a class="waves-effect btn-large hoverable red accent-2" style="margin-top:150px;">VIEW POST</a>
-	    </div>
-	    <div class="carousel-item red white-text" href="#two!" style="background-image: url('/static/images/2.jpeg'); background-size:cover;"> 
-	    	<h2>First Panel</h2>
-	    	<p class="white-text">Here is some mock data about this post. Apologies to your eyes!</p>
-	     	<a class="waves-effect btn-large hoverable red accent-2" style="margin-top:150px;">VIEW POST</a>
-	    </div>
-	    <div class="carousel-item red white-text" href="#three!" style="background-image: url('/static/images/3.jpeg'); background-size:cover;"> 
-	    	<h2>First Panel</h2>
-	    	<p class="white-text">Here is some mock data about this post. Apologies to your eyes!</p>
-	    	<a class="waves-effect btn-large hoverable red accent-2" style="margin-top:150px;">VIEW POST</a>
-	    </div>
-	    <div class="carousel-item red white-text" href="#one!" style="background-image: url('/static/images/1.jpeg'); background-size:cover;"> 
-	    	<h2>First Panel</h2>
-	    	<p class="white-text">Here is some mock data about this post. Apologies to your eyes!</p>
-	    	<a class="waves-effect btn-large hoverable red accent-2" style="margin-top:150px;">VIEW POST</a>
-	    </div>
+		{% for p in popular_posts %}
+			<div class="carousel-item red white-text" href="#three!" style="background-image: url('/static/images/3.jpeg'); background-size:cover;"> 
+				<h2>{{ p.title }}</h2>
+				<p class="white-text">{{ p.shortDescription|safe }}</p>
+				<a class="waves-effect btn-large hoverable red accent-2" style="margin-top:150px;" href="{% url 'view_post' p.slug %}">VIEW POST</a>
+			</div>
+		{% endfor %}
 	  </div>
         
 
@@ -97,17 +89,10 @@
 		  	<!-- SECTION FOR THE TAGS -->
 		  	<div class="col l3 s12 tags-div" style="margin-left: 50px;">
 		  		<h5>Categories</h5>
-		  		<div class="divider" style="margin-bottom: 10px;"></div>
-		  		<a href="#"><div class="chip">Django</div></a>
-		  		<a href="#"><div class="chip">NodeJs</div></a>
-		  		<a href="#"><div class="chip">PHP</div></a>
-		  		<a href="#"><div class="chip">HTML</div></a>
-		  		<a href="#"><div class="chip">CSS</div></a>
-		  		<a href="#"><div class="chip">JavaScript</div></a>
-		  		<a href="#"><div class="chip">JavaScript</div></a>
-		  		<a href="#"><div class="chip">ReactJS</div></a>
-		  		<a href="#"><div class="chip">JavaScript</div></a>
-		  		<a href="#"><div class="chip">JavaScript</div></a>
+				  <div class="divider" style="margin-bottom: 10px;"></div>
+				  {% for category in categories %}
+				  <a href="{% url 'view_category' category.slug %}"><div class="chip">{{ category.categoryTitle }}</div></a>
+				  {% endfor %}
 		  	</div>
 	    </div>
 	  </div>

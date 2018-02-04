@@ -38,6 +38,7 @@ class Post(models.Model):
     postTitle = models.CharField(max_length=500)
     content = RichTextField()
     author = models.ForeignKey(Author)
+    viewCount = models.IntegerField(default = 0)
     timestamp=models.DateTimeField(auto_now=False, auto_now_add=True)
     tag=models.ManyToManyField(Tag)
     slug=models.SlugField(null=True)

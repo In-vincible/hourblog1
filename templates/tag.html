@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- Compiled and minified CSS -->
+  	<link rel="stylesheet" href="/static/css/materialize.min.css">
+  	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/static/css/index_style.css">
+	<title>DevOHack</title>
+</head>
+<body>
+
+	<!-- NAVIGATION BAR SECTION -->
+
+	<nav>
+            <div class="nav-wrapper teal lighten-2">
+            <a href="{% url 'index' %}" class="brand-logo logo"><span class="logo">DevOHack.</span></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{% url 'index' %}">Blog</a></li>
+            <li><a class='dropdown-button btn' href='#' data-beloworigin="true" data-alignment="right" data-hover='true' data-activates='dropdown1'>Categories</a></li>
+                <ul id='dropdown1' class='dropdown-content'>
+                    {% for c in categories %}
+                        <li><a href="{% url 'view_category' c.slug%}">{{ c.categoryTitle }}</a></li>
+                    {% endfor %}
+                  </ul>
+            <li><a href="{% url 'view_aboutus' %}">About Us</a></li>
+          </ul>
+        </div>
+        </nav>
+
+    
+    <!-- LIST OF POSTS IN SELECTED CATEGORY -->
+    <div class="container">
+        <div class="row">
+            <h4 class="grey-text text-darken-2">Posts tagged as {{tag.tagTitle}} :</h4>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+                <div class="col l8 s12">
+                    {% if posts %}
+                        {% for post in posts.object_list %}
+                        <div class="card horizontal">
+                                <div class="card-image">
+                                <img src="/static/images/300cross200.jpeg">
+                                </div>
+                                <div class="card-stacked">
+                                <div class="card-content">
+                                        <p>{{ post.postTitle }}</p>
+                                </div>
+                                <div class="card-action">
+                                        <a href="{% url 'view_post' post.slug %}">READ MORE</a>
+                                </div>
+                                </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <ul class="pagination">
+                    {% if posts.has_previous %}
+                        <li class="disabled"><a href="?page={{ posts.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+                    {% endif %}
+                    {% for pg in posts.paginator.page_range %}
+                        {% if posts.number == pg %}
+                            <li class="active"><a href="?page={{pg}}">{{ pg }}</a></li>
+                        {% else %}
+                            <li class="waves-effect"><a href="?page={{pg}}">{{ pg }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if posts.has_next %}
+                        <li class="waves-effect"><a href="?page={{ posts.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+                    {% endif %}
+                </ul>	
+                </div>
+        </div>
+    </div>
+    
+    	<!-- PAGE FOOTER -->
+	  <footer class="page-footer teal lighten-2">
+	  	<div class="footer-copyright">
+    			<div class="container">
+    				<p>&copy; 2017 Copyright DevOHack, All Rights Reserved</p>
+    				<a href="#" class="grey-text text-lighten-4 right">Privacy Policy</a>
+    			</div>
+    		</div>
+	  </footer>
+
+	<script src="/static/js/jquery-3.2.1.min.js"></script>
+  	<script src="/static/js/materialize.min.js"></script>
+	<script src="/static/js/index_scripts.js"></script>
+</body>
+</html>
