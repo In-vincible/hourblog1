@@ -25,7 +25,7 @@ SECRET_KEY = '+!tq9rlxr16tu=#265#ipg40zbw5c*+do@i)*d(4&9clw7-^_f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['techwana.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['techwana.herokuapp.com', '127.0.0.1', 'techwana.tk']
 
 
 # Application definition
