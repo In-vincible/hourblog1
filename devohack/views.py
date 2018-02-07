@@ -76,3 +76,6 @@ def tag_view(request, slug):
 def aboutus_view(request):
 	categoryList = Category.objects.all()
 	return render(request, "aboutus.html", {'categories':categoryList}) 
+
+def comment(request):
+	return render(request,'comments.html')
