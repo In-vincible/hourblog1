@@ -1,6 +1,6 @@
 # hOUR BLOG 
 
-* Hosted on: http://techwana.tk/
+* Hosted on: http://devohack.tk/
 * Development server on heroku: https://techwana.herokuapp.com/
 * Runtime: Python 3.6
 ## How to install:
