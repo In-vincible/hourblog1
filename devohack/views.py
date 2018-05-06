@@ -13,7 +13,7 @@ def index(request):
 	for p in popular_posts:
 		pop = {}
 		pop['title'] = p.postTitle
-		pop['shortDescription'] = p.content[:180]+"..."
+		pop['shortDescription'] = p.gist
 		#print(pop['shortDescription'])
 		pop['slug'] = p.slug
 		popularPostsArray.append(pop)

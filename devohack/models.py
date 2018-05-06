@@ -37,6 +37,7 @@ class Tag(models.Model):
 class Post(models.Model):
     postId = models.AutoField(primary_key=True)
     postTitle = models.CharField(max_length=500)
+    gist = models.CharField(max_length=1000, blank=True, null=True)
     content = RichTextField()
     author = models.ForeignKey(Author)
     viewCount = models.IntegerField(default = 0)
