@@ -13,6 +13,15 @@ python3.6 -m venv hourblog
 cd hourblog/bin
 source activate
 ```
+
+## or 
+
+### Create virtualenv using virtualenvwrapper
+```
+mkvirtualenv hourblog --python=python3.6
+workon hourblog 
+```
+
 ### Enter Blog directory after activating the venv as described above:
 ```
 pip install -r requirements.txt
