@@ -4,6 +4,7 @@ from django.template.defaultfilters import slugify
 
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.core.validators import URLValidator
 
 # Create your models here.
 class Author(models.Model):
@@ -43,6 +44,7 @@ class Post(models.Model):
     tag=models.ManyToManyField(Tag)
     slug=models.SlugField(null=True)
     category=models.ManyToManyField(Category)
+    titleImage= models.TextField(validators=[URLValidator()], blank=True, null=True)
     def save(self, *args, **kwargs):
         self.slug=slugify(self.postTitle)
         super(Post, self).save(*args, **kwargs)
